@@ -5,8 +5,7 @@ Standard U-Net: 4 input channels (4 historical VIL frames) ->
 4 output channels (4 future VIL frames), with skip connections
 between the encoder and decoder at each resolution level.
 
-Sized for 128x128 inputs, small enough to train a few epochs on
-CPU or a single GPU within a day's time budget.
+Sized for 128x128 inputs.
 """
 
 import torch
@@ -124,4 +123,4 @@ if __name__ == "__main__":
     print(f"Output shape: {tuple(out.shape)}")
     assert out.shape == (2, 4, 128, 128), "Output shape mismatch!"
     print(f"Output value range: [{out.min().item():.4f}, {out.max().item():.4f}] (should be within [0,1] due to sigmoid)")
-    print("\n✅ U-Net forward pass verified.")
+    print("\n U-Net forward pass verified.")

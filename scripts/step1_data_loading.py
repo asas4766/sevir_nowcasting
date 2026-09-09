@@ -1,8 +1,5 @@
 """
-STEP 1 (FIXED v3): SEVIR Data Loading
-- Correct lowercase 'vil'
-- Correct 'data/' prefix in S3 path
-- Disjoint train/test split (no data leakage!)
+STEP 1: SEVIR Data Loading
 """
 
 import os
@@ -59,7 +56,7 @@ overlap = train_ids & test_ids
 print(f"Unique event IDs - Train: {len(train_ids)}, Test: {len(test_ids)}")
 print(f"Overlapping IDs: {len(overlap)}")
 if overlap:
-    print("❌ WARNING: Overlapping events detected!")
+    print(" WARNING: Overlapping events detected!")
 else:
     print("✅ No data leakage - train and test sets are disjoint")
 
@@ -132,7 +129,7 @@ np.savez_compressed(
 )
 
 print(f"\n" + "="*60)
-print("✅ DATA READY!")
+print(" DATA READY!")
 print("="*60)
 print(f"Train: {train_vil.shape} (10 events)")
 print(f"Test: {test_vil.shape} (5 events)")
@@ -145,6 +142,5 @@ for shard_path in shard_paths.values():
     if os.path.exists(shard_path):
         size_gb = os.path.getsize(shard_path) / (1024**3)
         os.remove(shard_path)
-        print(f"✓ Deleted {os.path.basename(shard_path)} ({size_gb:.1f} GB freed)")
+        print(f" Deleted {os.path.basename(shard_path)} ({size_gb:.1f} GB freed)")
 
-print("\n✅ Ready for Step 2!")
