@@ -1,0 +1,13 @@
+# Data access (SEVIR lives on a public, unsigned S3 bucket)
+boto3>=1.34
+pandas>=2.0
+h5py>=3.10
+
+# Core numerics / deep learning
+numpy>=1.26
+torch>=2.1
+
+# Evaluation / visualization
+matplotlib>=3.8
+imageio>=2.34
+Pillow>=10.0
